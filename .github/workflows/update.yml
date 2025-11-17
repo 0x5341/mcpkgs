@@ -1,0 +1,32 @@
+name: update-nix
+run-name: Update Nix Flake and Lockfile
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 0 * * *"
+
+jobs:
+    update:
+        name: Update
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - uses: nixbuild/nix-quick-install-action@v34
+            - uses: nix-community/cache-nix-action@v6
+              with:
+                primary-key: nix-${{ runner.os }}-${{ hashFiles('**/*.nix', '**/flake.lock') }}
+            - name: Update flake.lock
+              run: |
+                nix flake update
+            - name: Update Bun.lock & bun.nix
+              run: |
+                curl https://raw.githubusercontent.com/upstash/context7/refs/heads/master/bun.lock > context7-bun.lock
+                nix run .#gen-bun2nix
+            - name: Update Chrome-devtools hash
+              run: |
+                nix run github:Mic92/nix-update -- chrome-devtools --flake --url https://github.com/ChromeDevTools/chrome-devtools-mcp
+            - name: Commit Diff
+              uses: stefanzweifel/git-auto-commit-action@v7
+              with:
+                commit_message: Update *.lock
