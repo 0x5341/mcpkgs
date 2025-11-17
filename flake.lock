@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "chrome-devtools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763052319,
+        "narHash": "sha256-ewRDI5d3cEJrocoNuDebyiicIpvwNMmrPfqvgA4RRU0=",
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "rev": "5f78b51a1cb8bbffba400f8da13b291f564c1ff1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ChromeDevTools",
+        "repo": "chrome-devtools-mcp",
+        "type": "github"
+      }
+    },
     "context7": {
       "flake": false,
       "locked": {
@@ -120,6 +136,7 @@
     },
     "root": {
       "inputs": {
+        "chrome-devtools": "chrome-devtools",
         "context7": "context7",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",

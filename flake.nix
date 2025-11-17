@@ -12,6 +12,10 @@
       url = "github:upstash/context7";
       flake = false;
     };
+    chrome-devtools = {
+      url = "github:ChromeDevTools/chrome-devtools-mcp";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,6 +27,7 @@
 
         # packages
         serena = inputs.serena.packages.${system}.serena;
+        
         context7 = import ./context7.nix {
           mkDerivation = pkgs.stdenvNoCC.mkDerivation;
           inherit pkgs;
@@ -30,11 +35,14 @@
           getExe = nixpkgs.lib.getExe;
           nodejs = pkgs.nodejs-slim;
         };
+
+        chrome-devtools = import ./chrome-devtools.nix {
+          inherit pkgs inputs;
+        };
       in
       {
         packages = {
-          serena = serena;
-          context7 = context7;
+          inherit serena context7 chrome-devtools;
         };
       }
     );
