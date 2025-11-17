@@ -51,11 +51,11 @@
     "chrome-devtools": {
       "flake": false,
       "locked": {
-        "lastModified": 1763366811,
-        "narHash": "sha256-UT+bh9gZKlRVM1ggejttJX3MsGIlwOdxgxnwg5iPd5w=",
+        "lastModified": 1763391157,
+        "narHash": "sha256-E07ptHqvEHtvI0ZubTRsjTTVpqtCSoyxh2uk32BbNWw=",
         "owner": "ChromeDevTools",
         "repo": "chrome-devtools-mcp",
-        "rev": "c42d81a4101e64fc4f2d6dce5d06470829f8ea80",
+        "rev": "c3784d1990a926f651951e4eef05520c5c448964",
         "type": "github"
       },
       "original": {
@@ -67,11 +67,11 @@
     "context7": {
       "flake": false,
       "locked": {
-        "lastModified": 1763363709,
-        "narHash": "sha256-idYRh0H31RNLMvqJHB+zTh0Hdkzx9VzEHjWQbuUI4Eo=",
+        "lastModified": 1763406257,
+        "narHash": "sha256-/2WYIYAIiR1rY2lM04N0D3PT6fCoGBLmLuwpaRZMA6M=",
         "owner": "upstash",
         "repo": "context7",
-        "rev": "0859fb8108013ab50ac21447a1a7ea5ae976a172",
+        "rev": "81cfa22752e8d63e980a66a0c8cc5357bcf3b09c",
         "type": "github"
       },
       "original": {
@@ -203,11 +203,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1763225698,
-        "narHash": "sha256-eC2imo+qgtN7G141PuVH44721V94o4924gCS3GglgPQ=",
+        "lastModified": 1763392951,
+        "narHash": "sha256-3r/MUtlOypH7yn7dGFDItDeU7LZbdb3xjjVhX4qhu1s=",
         "owner": "oraios",
         "repo": "serena",
-        "rev": "568ee77e42655f049fedca123591459b84fcc9df",
+        "rev": "600080c68fbdecc126732291ddd0424864b84a58",
         "type": "github"
       },
       "original": {
