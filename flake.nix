@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    bun2nix = {
+      url = "github:baileyluTCD/bun2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     serena = {
       url = "github:oraios/serena";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +23,7 @@
   };
 
   outputs =
-    { nixpkgs, flake-utils, ... }@inputs:
+    { nixpkgs, flake-utils, bun2nix, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -29,7 +33,7 @@
         serena = inputs.serena.packages.${system}.serena;
         
         context7 = import ./context7.nix {
-          inherit pkgs inputs;
+          inherit pkgs inputs system;
         };
 
         chrome-devtools = import ./chrome-devtools.nix {
@@ -39,6 +43,17 @@
       {
         packages = {
           inherit serena context7 chrome-devtools;
+        };
+        apps = {
+          gen-bun2nix = let 
+            script = pkgs.writeScriptBin "gen-bun2nix" ''
+              #! /bin/sh
+              ${bun2nix.packages.${system}.default}/bin/bun2nix -l context7-bun.lock -o context7-bun.nix
+            ''; 
+          in {
+            type = "app";
+            program = "${script}/bin/gen-bun2nix";
+          };
         };
       }
     );
