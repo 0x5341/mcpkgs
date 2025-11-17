@@ -1,15 +1,10 @@
-{
-  mkDerivation,
-  pkgs,
-  src,
-  getExe,
-  nodejs,
-}:
+{ pkgs, inputs }:
 let
+  mkDerivation = pkgs.stdenvNoCC.mkDerivation;
   deps = mkDerivation {
     pname = "context7-deps";
     version = "master";
-    src = "${src}";
+    src = "${inputs.context7}";
     nativeBuildInputs = with pkgs; [ bun ];
 
     dontFixup = true;
@@ -29,12 +24,12 @@ in
 mkDerivation {
   pname = "context7";
   version = "master";
-  src = "${src}";
+  src = "${inputs.context7}";
   nativeBuildInputs = with pkgs; [ bun ];
   buildPhase = ''
     cp -r ${deps}/node_modules ./node_modules
     substituteInPlace node_modules/.bin/tsc \
-      --replace-fail "/usr/bin/env node" "${getExe nodejs}"
+      --replace-fail "/usr/bin/env node" "${inputs.nixpkgs.lib.getExe pkgs.nodejs-slim}"
     bun run build
     bun build dist/index.js --minify --compile --outfile=context7-mcp
   '';

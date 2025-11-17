@@ -29,11 +29,7 @@
         serena = inputs.serena.packages.${system}.serena;
         
         context7 = import ./context7.nix {
-          mkDerivation = pkgs.stdenvNoCC.mkDerivation;
-          inherit pkgs;
-          src = inputs.context7;
-          getExe = nixpkgs.lib.getExe;
-          nodejs = pkgs.nodejs-slim;
+          inherit pkgs inputs;
         };
 
         chrome-devtools = import ./chrome-devtools.nix {
