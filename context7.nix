@@ -8,6 +8,7 @@ inputs.bun2nix.lib.${system}.mkBunDerivation {
     bun run build
     bun build dist/index.js --compile --minify --sourcemap --bytecode --outfile context7-mcp
   '';
+  dontStrip = true;
   bunNix = ./context7-bun.nix;
 }
  
