@@ -43,11 +43,11 @@
     "context7": {
       "flake": false,
       "locked": {
-        "lastModified": 1763549784,
-        "narHash": "sha256-+PDx0NUY1hYHRja7EbHGQ2zhAmJZsTAETQy/LmRW3UQ=",
+        "lastModified": 1763822022,
+        "narHash": "sha256-f62vFJb3BFOPjgy2RjNkRgWTllriO4yVlToS2rdFMKM=",
         "owner": "upstash",
         "repo": "context7",
-        "rev": "866243ef304ddd1341755d0de39a2aa48500ab91",
+        "rev": "45ed23558b098491692f8f98aa42e93c0f2a0c2f",
         "type": "github"
       },
       "original": {
